@@ -1,5 +1,6 @@
-function yy = sw_int(xx)
+function yy = sm_int(xx)
 
+% interpolate and extrapolate ir [K] to cpc [mm]
 % mm  IR diff in K
 % ----------------
 % 100	10

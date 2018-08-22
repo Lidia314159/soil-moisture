@@ -20,14 +20,14 @@ for i=1:size(c,3)
     mmix = 0.5*(cc + iirr);
     mix(:,:,i) = mmix;
     
-    %figure; mesh(cc); view(0,90); colorbar
-    figure; histogram(cc, 'Normalization','probability'); grid on; title('Normalized Histogram of CPC')
-    
-    %figure; mesh(iirr); view(0,90); colorbar
-    figure; histogram(iirr, 'Normalization','probability'); grid on; title('Normalized Histogram of IR')
-    
-    %figure; mesh(mmix); view(0,90); colorbar
-    figure; histogram(mmix, 'Normalization','probability'); grid on; title('Normalized Histogram of Mix')
+    figure
+    mesh(cc)
+    figure
+    mesh(iirr)
+
+    figure; histogram(iirr, 'Normalization','probability'); title('NormalData: IR')
+    figure; mesh(mix(:,:,i)); view(0,90); colorbar
+    figure; histogram(mix(:,:,i), 'Normalization','probability'); title('Data, date: yyyymmdd')
     
 end
 

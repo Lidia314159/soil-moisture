@@ -37,13 +37,13 @@
 ii=10;
 da = c(:,:,1)/1000;
 figure; mesh(da); view(0,90); colorbar; title('CPC 4/9/2018')
-da = sw_int(ir(:,:,1))/1000;
+da = sm_int(ir(:,:,1))/1000;
 figure; mesh(da); view(0,90); colorbar; title('dIR 4/9/2018')
 figure; mesh(mix(:,:,1)); view(0,90); colorbar; title('Mix 4/9/2018')
 
 da = c(:,:,ii)/1000;
 figure; histogram(da,'Normalization','probability'); title('CPC histogram: 4/9/2018')
-da = sw_int(ir(:,:,ii))/1000;
+da = sm_int(ir(:,:,ii))/1000;
 figure; histogram(da,'Normalization','probability'); title('dIR histogram: 4/9/2018')
 figure; histogram(mix(:,:,ii),'Normalization','probability'); title('Mix histogram: 4/9/2018')
 

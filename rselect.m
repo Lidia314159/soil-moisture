@@ -8,18 +8,22 @@
 close all
 clear all
 
-l1 = dir('/Users/Lidija/Documents/MATLAB/SoilMoisture/cpc/*.csv');
-l2 = dir('/Users/Lidija/Documents/MATLAB/SoilMoisture/abi/*.csv');
+testplot = 0;
 
-% lx = 951;
-% rx = 1500;
-% ly = 201;
-% hy = 700;
+l1 = dir('/Users/Lidija/Documents/MATLAB/SoilMoisture/cpc/2018*.csv');
+l2 = dir('/Users/Lidija/Documents/MATLAB/SoilMoisture/abi/2018*.csv');
 
-lx = 1;
-rx = 1799;
-ly = 1;
-hy = 1049;
+% subset for testing
+lx = 951;
+rx = 1500;
+ly = 201;
+hy = 700;
+
+% conus for hr3 processing
+%lx = 1;
+%rx = 1799;
+%ly = 1;
+%hy = 1049;
 
 c = zeros(hy-ly+1, rx-lx+1, length(l1));  
 % 10% of cpc in this region is = -999
@@ -61,39 +65,42 @@ end
 %figure; mesh(avis20_sel-avis20_sel); view(0,90); colorbar
 
 %%
-% for i=1:10
-%     figure
-%     mesh(c(:,:,i)); view(0,90); colorbar
-%     figure
-%     mesh(ir(:,:,i)); view(0,90); colorbar
-%     figure
-%     mesh(vis(:,:,i)); view(0,90); colorbar
-% end
+if testplot 
+    for i=1:10
+        figure
+        mesh(c(:,:,i)); view(0,90); colorbar
+        figure
+        mesh(ir(:,:,i)); view(0,90); colorbar
+        figure
+        mesh(vis(:,:,i)); view(0,90); colorbar
+    end
+end
 
-%%
-% figure
-% for i=1:10
-%     % clean data = -999
-%     tmpp = c(:,:,i);
-%     vv = tmpp(:); %matrix to vector
-%     ww = find(vv>-999); %exclude -999
-%     plot(sort(vv(ww))); %take a look
-%     %tmpp = c(:,:,i);
-%     %plot(sort(tmpp(:)));
-%     hold on; grid on
-%     title('Range of CPC values>-999 for 10 days (3/31-4/9)')
-% end
-% figure
-% for i=1:10
-%     tmpp = ir(:,:,i);
-%     plot(sort(tmpp(:)));
-%     hold on; grid on
-%     title('Range of difference (20z-16z) IR values for 10 days (3/31-4/9)')
-% end    
-% figure
-% for i=1:10
-%     tmpp = vis(:,:,i);
-%     plot(sort(tmpp(:)));
-%     hold on; grid on
-%     title('Range of difference (20z-16z) VIS values for 10 days (3/31-4/9)')
-% end
+if testplot 
+    figure
+    for i=1:10
+        % clean data = -999
+        tmpp = c(:,:,i);
+        vv = tmpp(:); %matrix to vector
+        ww = find(vv>-999); %exclude -999
+        plot(sort(vv(ww))); %take a look
+        %tmpp = c(:,:,i);
+        %plot(sort(tmpp(:)));
+        hold on; grid on
+        title('Range of CPC values>-999 for 10 days (3/31-4/9)')
+    end
+    figure
+    for i=1:10
+        tmpp = ir(:,:,i);
+        plot(sort(tmpp(:)));
+        hold on; grid on
+        title('Range of difference (20z-16z) IR values for 10 days (3/31-4/9)')
+    end    
+    figure
+    for i=1:10
+        tmpp = vis(:,:,i);
+        plot(sort(tmpp(:)));
+        hold on; grid on
+        title('Range of difference (20z-16z) VIS values for 10 days (3/31-4/9)')
+    end
+end
